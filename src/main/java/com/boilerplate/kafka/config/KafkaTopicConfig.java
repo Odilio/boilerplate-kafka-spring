@@ -1,5 +1,4 @@
-package com.boilerplate.kafka;
-
+package com.boilerplate.kafka.config;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,16 +15,10 @@ public class KafkaTopicConfig {
     @Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
 
-    @Value(value = "${message.topic.name}")
+    @Value(value = "segundo")
     private String topicName;
 
-    @Value(value = "${partitioned.topic.name}")
-    private String partitionedTopicName;
-
-    @Value(value = "${filtered.topic.name}")
-    private String filteredTopicName;
-
-    @Value(value = "${greeting.topic.name}")
+    @Value(value = "mensagem")
     private String greetingTopicName;
 
     @Bean
@@ -42,16 +35,6 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic2() {
-        return new NewTopic(partitionedTopicName, 6, (short) 1);
-    }
-
-    @Bean
-    public NewTopic topic3() {
-        return new NewTopic(filteredTopicName, 1, (short) 1);
-    }
-
-    @Bean
-    public NewTopic topic4() {
         return new NewTopic(greetingTopicName, 1, (short) 1);
     }
 }

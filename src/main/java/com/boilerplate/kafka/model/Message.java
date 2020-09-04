@@ -1,15 +1,14 @@
-package com.boilerplate.kafka;
-
-public class Greeting {
+package com.boilerplate.kafka.model;
+public class Message {
 
     private String msg;
     private String name;
 
-    public Greeting() {
+    public Message() {
 
     }
 
-    public Greeting(String msg, String name) {
+    public Message(String msg, String name) {
         this.msg = msg;
         this.name = name;
     }

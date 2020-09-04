@@ -7,24 +7,20 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import com.boilerplate.kafka.model.Message;
+
 public class MessageProducer {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
-    KafkaTemplate<String, Greeting> greetingKafkaTemplate;
+    KafkaTemplate<String, Message> greetingKafkaTemplate;
 
-    @Value(value = "${message.topic.name}")
+    @Value(value = "segundo")
     String topicName;
 
-    @Value(value = "${partitioned.topic.name}")
-    String partitionedTopicName;
-
-    @Value(value = "${filtered.topic.name}")
-    String filteredTopicName;
-
-    @Value(value = "${greeting.topic.name}")
+    @Value(value = "mensagem")
     String greetingTopicName;
 
     public void sendMessage(String message) {
@@ -46,15 +42,8 @@ public class MessageProducer {
         });
     }
 
-    public void sendMessageToPartition(String message, int partition) {
-        kafkaTemplate.send(partitionedTopicName, partition, null, message);
-    }
 
-    public void sendMessageToFiltered(String message) {
-        kafkaTemplate.send(filteredTopicName, message);
-    }
-
-    public void sendGreetingMessage(Greeting greeting) {
+    public void sendGreetingMessage(Message greeting) {
         greetingKafkaTemplate.send(greetingTopicName, greeting);
     }
 }

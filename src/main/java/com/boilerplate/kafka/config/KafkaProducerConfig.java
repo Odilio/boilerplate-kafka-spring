@@ -1,5 +1,4 @@
-package com.boilerplate.kafka;
-
+package com.boilerplate.kafka.config;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +8,8 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+
+import com.boilerplate.kafka.model.Message;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Greeting> greetingProducerFactory() {
+    public ProducerFactory<String, Message> greetingProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -43,7 +44,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Greeting> greetingKafkaTemplate() {
+    public KafkaTemplate<String, Message> greetingKafkaTemplate() {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
 
