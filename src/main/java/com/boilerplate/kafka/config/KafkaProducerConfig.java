@@ -35,7 +35,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Message> greetingProducerFactory() {
+    public ProducerFactory<String, Message> messageProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -44,8 +44,8 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Message> greetingKafkaTemplate() {
-        return new KafkaTemplate<>(greetingProducerFactory());
+    public KafkaTemplate<String, Message> messageKafkaTemplate() {
+        return new KafkaTemplate<>(messageProducerFactory());
     }
 
 }

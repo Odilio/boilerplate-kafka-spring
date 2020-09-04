@@ -65,7 +65,7 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
-    public ConsumerFactory<String, Message> greetingConsumerFactory() {
+    public ConsumerFactory<String, Message> messageConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "mensagem");
@@ -73,9 +73,9 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Message> greetingKafkaListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, Message> messageKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Message> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(greetingConsumerFactory());
+        factory.setConsumerFactory(messageConsumerFactory());
         return factory;
     }
 

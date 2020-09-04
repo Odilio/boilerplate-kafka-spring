@@ -19,7 +19,7 @@ public class KafkaTopicConfig {
     private String topicName;
 
     @Value(value = "mensagem")
-    private String greetingTopicName;
+    private String messageTopicName;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -35,6 +35,6 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic2() {
-        return new NewTopic(greetingTopicName, 1, (short) 1);
+        return new NewTopic(messageTopicName, 1, (short) 1);
     }
 }

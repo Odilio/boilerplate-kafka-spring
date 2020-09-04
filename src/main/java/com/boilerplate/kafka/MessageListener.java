@@ -3,7 +3,6 @@ package com.boilerplate.kafka;
 import java.util.concurrent.CountDownLatch;
 
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -14,7 +13,7 @@ public class MessageListener {
 
         CountDownLatch latch = new CountDownLatch(3);
 
-        CountDownLatch greetingLatch = new CountDownLatch(1);
+        CountDownLatch messageLatch = new CountDownLatch(1);
 
         @KafkaListener(topics = "segundo", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
         public void listenGroupFoo(String message) {
@@ -34,10 +33,10 @@ public class MessageListener {
             latch.countDown();
         }
 
-        @KafkaListener(topics = "mensagem", containerFactory = "greetingKafkaListenerContainerFactory")
+        @KafkaListener(topics = "mensagem", containerFactory = "messageKafkaListenerContainerFactory")
         public void greetingListener(Message greeting) {
             System.out.println("Received greeting message: " + greeting);
-            this.greetingLatch.countDown();
+            this.messageLatch.countDown();
         }
 
     }

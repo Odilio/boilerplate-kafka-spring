@@ -25,10 +25,10 @@ public class KafkaApplication {
         listener.latch.await(10, TimeUnit.SECONDS);
 
         /*
-         * Sending message to 'mensagem' topic. This will send
+         * Sending message to 'mensage' topic. This will send
          */
-        producer.sendGreetingMessage(new Message("Greetings", "World!"));
-        listener.greetingLatch.await(10, TimeUnit.SECONDS);
+        producer.sendMessage(new Message("Uababluba", "Bula bam bum!"));
+        listener.messageLatch.await(10, TimeUnit.SECONDS);
 
         context.close();
     }

@@ -43,7 +43,7 @@ public class MessageProducer {
     }
 
 
-    public void sendGreetingMessage(Message greeting) {
+    public void sendMessage(Message greeting) {
         greetingKafkaTemplate.send(greetingTopicName, greeting);
     }
 }
