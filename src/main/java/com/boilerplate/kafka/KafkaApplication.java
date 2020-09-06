@@ -8,6 +8,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.boilerplate.kafka.model.Message;
+import com.boilerplate.kafka.service.MessageListener;
+import com.boilerplate.kafka.service.MessageProducer;
 
 @SpringBootApplication
 public class KafkaApplication {

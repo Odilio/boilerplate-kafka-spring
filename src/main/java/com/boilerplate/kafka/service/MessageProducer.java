@@ -1,4 +1,4 @@
-package com.boilerplate.kafka;
+package com.boilerplate.kafka.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +21,7 @@ public class MessageProducer {
     String topicName;
 
     @Value(value = "mensagem")
-    String greetingTopicName;
+    String messageTopicName;
 
     public void sendMessage(String message) {
 
@@ -44,6 +44,6 @@ public class MessageProducer {
 
 
     public void sendMessage(Message greeting) {
-        greetingKafkaTemplate.send(greetingTopicName, greeting);
+        greetingKafkaTemplate.send(messageTopicName, greeting);
     }
 }

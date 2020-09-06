@@ -1,4 +1,4 @@
-package com.boilerplate.kafka;
+package com.boilerplate.kafka.service;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -11,9 +11,9 @@ import com.boilerplate.kafka.model.Message;
 
 public class MessageListener {
 
-        CountDownLatch latch = new CountDownLatch(3);
+        public CountDownLatch latch = new CountDownLatch(2);
 
-        CountDownLatch messageLatch = new CountDownLatch(1);
+        public CountDownLatch messageLatch = new CountDownLatch(1);
 
         @KafkaListener(topics = "segundo", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
         public void listenGroupFoo(String message) {
